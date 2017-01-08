@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var movie_list_component_1 = require("./movies/movie-list.component");
 var AppComponent = (function () {
     function AppComponent() {
         this.welcomeMessage = "Welcome to your first component!";
@@ -16,7 +17,8 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: "my-app",
-            template: "<h1>{{welcomeMessage}}</h1>"
+            template: "<h1>{{welcomeMessage}}</h1>\n                <div>\n                <mm-movies></mm-movies>\n                </div>\n                ",
+            directives: [movie_list_component_1.MovieListComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
