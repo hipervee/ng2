@@ -45,7 +45,10 @@
                         <td>{{movie.movieStar | uppercase}}</td>
                         <td>{{movie.releaseDate}}</td>
                         <td>{{movie.price | currency: 'USD' : true : '1.2-2'}}</td>
-                        <td>{{movie.starRating}}</td>
+                        <td>
+                            <md-review [rating]="movie.starRating"
+                            (ratingClicked) = "onRatingClicked($event)"></md-review>
+                            </td>
                     </tr>
                 </tbody>
             </table>
