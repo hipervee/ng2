@@ -11,39 +11,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var movie_filter_pipe_1 = require("./movie-filter.pipe");
 var review_component_1 = require("../shared/review.component");
+var movies_service_1 = require("./movies.service");
 var MovieListComponent = (function () {
-    function MovieListComponent() {
+    function MovieListComponent(_movieService) {
+        this._movieService = _movieService;
         this.title = 'Movie List';
         this.imageWidth = 50;
         this.imageMargin = 2;
         this.seePoster = false;
-        this.movies = [
-            {
-                "movieId": 2,
-                "movieName": "Titanic!",
-                "movieStar": "DiCaprio",
-                "releaseDate": "3/13/2016",
-                "price": 8.00,
-                "starRating": 4.5,
-                "imageUrl": "http://ia.media-imdb.com/images/M/MV5BMzg1MDA0MTU2Nl5BMl5BanBnXkFtZTcwMTMzMjkxNw@@._V1_.jpg"
-            },
-            {
-                "movieId": 3,
-                "movieName": "Jaws!",
-                "movieStar": "Shaw",
-                "releaseDate": "4/13/2016",
-                "price": 6.00,
-                "starRating": 4.8,
-                "imageUrl": "http://ia.media-imdb.com/images/M/MV5BNDcxODkyMjY4MF5BMl5BanBnXkFtZTgwOTk5NTc5MDE@._V1_SY1000_CR0,0,666,1000_AL_.jpg"
-            }
-        ];
     }
     MovieListComponent.prototype.toggleImage = function () {
         this.seePoster = !this.seePoster;
     };
     ;
     MovieListComponent.prototype.ngOnInit = function () {
-        console.log("Init Called");
+        var _this = this;
+        this._movieService.getMovies()
+            .subscribe(function (movies) { return _this.movies = movies; }, function (error) { return _this.errorMessage = error; });
     };
     MovieListComponent.prototype.onRatingClicked = function (message) {
         this.title = "Rating Clicked : " + message;
@@ -56,7 +40,7 @@ var MovieListComponent = (function () {
             pipes: [movie_filter_pipe_1.MovieFilterPipe],
             directives: [review_component_1.ReviewComponent]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [movies_service_1.MovieService])
     ], MovieListComponent);
     return MovieListComponent;
 }());

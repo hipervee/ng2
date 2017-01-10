@@ -6,4 +6,5 @@ export interface IMovie {
     price: number;
     starRating: number;
     imageUrl: string;
+    description: string;
 }

@@ -1,5 +1,8 @@
 import {Component} from "@angular/core";
 import {MovieListComponent} from  "./movies/movie-list.component";
+import {MovieService} from "./movies/movies.service";
+import {HTTP_PROVIDERS} from "@angular/http";
+import "rxjs/Rx";
 
 @Component({
     selector: "my-app",
@@ -8,7 +11,8 @@ import {MovieListComponent} from  "./movies/movie-list.component";
                 <mm-movies></mm-movies>
                 </div>
                 `,
-    directives: [MovieListComponent]
+    directives: [MovieListComponent],
+    providers: [MovieService, HTTP_PROVIDERS]
 })
 
 export class AppComponent {
