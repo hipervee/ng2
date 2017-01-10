@@ -7,6 +7,7 @@ import {Observable} from "rxjs/Observable";
 export class MovieService {
     private _movieUrl: string = "api/movies/movies.json";
     constructor(private _http: Http) { }
+
     getMovies(): Observable<IMovie[]> {
        return this._http.get(this._movieUrl)
        .map((response: Response) => <IMovie[]>response.json())
